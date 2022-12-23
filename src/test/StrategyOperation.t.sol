@@ -176,8 +176,8 @@ contract StrategyOperationsTest is StrategyFixture {
         strategy.harvest();
         //Make sure we have updated the debt ratio of the strategy
         assertRelApproxEq(
-            strategy.estimatedTotalAssets(), 
-            _amount / 2, 
+            strategy.estimatedTotalAssets(),
+            _amount / 2,
             DELTA
         );
         skip(6 hours);
@@ -187,8 +187,8 @@ contract StrategyOperationsTest is StrategyFixture {
         StrategyParams memory params = vault.strategies(address(strategy));
         //Make sure we got back profit + half the deposit
         assertRelApproxEq(
-            _amount / 2 + params.totalGain, 
-            vaultBalance, 
+            _amount / 2 + params.totalGain,
+            vaultBalance,
             DELTA
         );
         assertGe(vault.pricePerShare(), beforePps);
