@@ -3,7 +3,7 @@
 
 pragma solidity ^0.8.12;
 
-interface IL1DaiGateway {
+interface IGateWay {
     function outboundTransfer(
         address l1Token,
         address to,
@@ -12,4 +12,12 @@ interface IL1DaiGateway {
         uint256 gasPriceBid,
         bytes calldata data
     ) external payable returns (bytes memory);
+
+    function finalizeInboundTransfer(
+        address l1Token,
+        address from,
+        address to,
+        uint256 amount,
+        bytes calldata data
+    ) external;
 }

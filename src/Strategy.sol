@@ -11,14 +11,9 @@ import {Address} from "@openzeppelin/contracts/utils/Address.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-import {IL1DaiGateway} from "./interfaces/IL1DaiGateway.sol";
-
 contract Strategy is BaseStrategy {
     using SafeERC20 for IERC20;
     using Address for address;
-
-    IL1DaiGateway public constant L1_DAI_GATEWAY =
-        IL1DaiGateway(0xD3B5b60020504bc3489D6949d545893982BA3011);
 
     constructor(address _vault) BaseStrategy(_vault) {
         // You can set these parameters on deployment to whatever you want
