@@ -35,6 +35,7 @@ contract TestTeleport is StrategyFixture {
         vm.selectFork(arbitrum_fork_id);
         vm.startPrank(L1_COUNTER_PART);
         uint256 tapir_balance_arb_before = L2_DAI.balanceOf(TAPIR_TEST_ACC);
+        console.log('Before bridge balance', tapir_balance_arb_before);
         assertEq(tapir_balance_arb_before, 0); // no funds before in ARB
         L2_GATEWAY.finalizeInboundTransfer(
             tokenAddrs["DAI"],
@@ -45,7 +46,7 @@ contract TestTeleport is StrategyFixture {
         );
         uint256 tapir_balance_arb_after = L2_DAI.balanceOf(TAPIR_TEST_ACC);
         assertTrue(tapir_balance_arb_after > tapir_balance_arb_before);
-        console.log(tapir_balance_arb_after);
+        console.log("After bridge balance", tapir_balance_arb_after);
     }
 
     function _deployTestTeleportContract() internal {
